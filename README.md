@@ -24,6 +24,25 @@ while retaining near-optimal flow allocations.
     - [Miniconda](https://docs.anaconda.com/free/anaconda/install/index.html) or [Anaconda](https://docs.anaconda.com/free/anaconda/install/index.html) is required
 - Run `conda activate teal` to activate the Conda environment. All the following steps related to Python (e.g., `pip` and `python` commands) **must be performed within this Conda environment** to ensure correct Python dependencies.
 - Run `pip install -r requirements.txt` to install additional Python dependencies
+### Additional changes for pop-ncflow-lptop (updated gurobi versions)
+- Uninstall existing scipy, and reinstall higher version for sparse matrix support (for ALCD)
+    ```
+    pip uninstall scipy
+    pip install "scipy>1.8"
+    ```
+- Uninstall existing gurobipy, and reinstall higher version
+    ```
+    pip uninstall gurobipy
+    pip install "gurobipy>10.0"
+    ```
+- If benchmarking Google PDLP solver, install ortools
+    ```
+    pip install "ortools<9.10"
+    ```
+- Finally, install pybind11 to compile ALCD solver
+    ```
+    pip install pybind11
+    ```
 
 #### Dependencies only required for baselines
 - Install `make`
